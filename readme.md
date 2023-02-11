@@ -16,7 +16,7 @@ It's a service (hardware or online server) for relaying and saving messages. Can
 Initially it is a web server but planned to be extended to work on hardware level too.
 
 ## EMCO Client
-A Client can connect via EMCO Protocol. (`EMCO-P`)
+A Client can connect via `EMCO-P`
 There are 2 types of clients.
 1. Hardware Clients.
 2. Software clients.
@@ -39,14 +39,14 @@ Bridge devices can translate or transmit between protocols LoRa <-> TCP
 Basic Data Structure
 ```jsonc
 {
-    is:"PUBKEY"//Issuer
-    sig:"SIGNATURE"
+    is:"PUBKEY",//Issuer
+    sig:"SIGNATURE",
     tm:{ //Telemetry
         lt:"", //Latitude
         ln:"", //Longitude
         csp:"", //Coordinate source / provider & precision 
         ldtz:"", //ISO String
-        ut:"" //Unix Time
+        ut:"", //Unix Time
         ac:"",//Country
         as:"",//State
         at:"",//Town (City)
@@ -72,7 +72,7 @@ Basic Data Structure
     },
     e:{//Echo
         //Needs to be explored.
-        is:"ISSUER"
+        is:"ISSUER",
         sig:"SIGNATURE"
         //Echo object should contain its own signature, 
         //Echo object should be ignored when calculating request signature
