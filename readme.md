@@ -62,6 +62,10 @@ Basic Data Structure
     i:{//Identification
     //This is an object for a client/user to introduce itself.
     //Can contain informations like; 
+    n:"",//User name
+    t:"",//User title
+    b:"",//User bio
+    p:"",//User photo
     // - name, 
     // - photo, 
     // - location, 
@@ -93,7 +97,7 @@ Basic Data Structure
 | ut    | Unix Time                   | Yes      | Can be used over ldtz.                                                                     | 1676087538810             |
 | tm.ac | Country ISO 2 Chars         | No       | ISO 3166 ALPHA-2 Country Code                                                              | TR for Turkey             |
 | tm.as | State Name                  | No       | State name abbreviation if available.                                                      | CA                        |
-| tm.at | Town / City                 | No       | Hakkari                                                                                    | Hakkari                   |
+| tm.at | Town / City                 | No       | Name of the city                                                                           | Hakkari                   |
 | tm.am | Muncipality                 | No       | Next type of location under a city                                                         | Çukurca                   |
 | r     | Request Object              | ~        |                                                                                            |                           |
 | r.t   | Request Type                | Yes      | Single char request type. See request type table.                                          | P                         |
@@ -101,12 +105,12 @@ Basic Data Structure
 | r.m   | Request Message             | No       | Optional text content for a request. Up to 320 characters.                                 | Fire, help!               |
 | r.sc  | Short Code                  | No       | Optional short code for various situations. See Short Status Code Table                    |                           |
 | r.th  | Thread Id                   | No       | If this message is an addition to another message, specify sig id of the previous message. |                           |
-| i     | Identification Object       | No       | Client identification broadcast data.                                                      |                           |
-| i.n   | Name                        | No       |                                                                                            |                           |
-| i.t   | Title                       | No       |                                                                                            |                           |
+| i     | Identification Object       | ~        | Client identification broadcast data.                                                      |                           |
+| i.n   | Name                        | No       | User name                                                                                  |                           |
+| i.t   | Title                       | No       | Any title a user can use                                                                   |                           |
 | i.b   | Bio                         | No       | 320 Characters text                                                                        |                           |
 | i.p   | Photo URL                   | No       | A web URL or encoded file                                                                  |                           |
-| i.sm  | Twitter handle              | No       | Twitter handle                                                                             |                           |
+| i.smt | Twitter handle              | No       | Twitter handle                                                                             |                           |
 
 
 
@@ -136,37 +140,65 @@ My intial thoughts are;
 
 
 
+
 ## Short Codes (Needs to be extended.)
-- A => ALL OK
-- A0 => All good. / I'm ok
-- A1 => I've been rescued.
-- 
+- AA => ALL OK
+- AA0 => All good. / I'm ok
+- AA1 => I've been rescued.
+- A => Avalanche / Snow
+- A0 => Under Avalanche
+- B => Bio Hazard
+- B1 => Bio hazard exposure
+- B2 => Chemical exposure
+- B3 => Radioactivity exposure
 - C => Earthquake
 - C1 => Under wreck
 - 
 - D => Flooding.
 - D1 => Flooding trapped.
 - 
-- F => Fire
-- F1 => Place I'm in is burning.
+- E => Explosion
+- E1 => Near explosion
+- E2 => Witnessed explosion
 - 
+- F => Fire
+- F1 => Wildfire.
+- F2 => Homefire
+- G
+- H => Hurricane
+- H1 => Stranded in a hurricane zone/
+- I
+- J
+- K
 - L => Life threatening situation
 - L1 => Heart Attack
-- L2 => Stabbed
+- L2 => Attack / Stabbed / Wounded
 - L3 => Being followed
 - L4 => Need medicine
 - L5 => Need water
 - L6 => Need shelter
 - L7 => Trapped
-- 
+- M
+- N => Nature
+- N1 => Landslide
+- N2 => Storm / Tornadoe / Hurricane / Typhoon
+- N3 => Avalance
+- N4 => Flood
+- O
+- P
+- Q
+- R 
+- S => Sickness
+- T
+- U
+- V
 - W: => Sea, Ocean related messages
 - W1: => Stranded
-- W2: => Crash
-- 
+- W2: => Boat, ship crash
 - X: Emergency responses
 - X0: Ping
 - X1: Rescued
-- 
+- Y
 - Z: Emergency responses
 - Z0 Ping
 - Z1: Request received
@@ -174,10 +206,15 @@ My intial thoughts are;
 - Z3: Arrived
 - Z4: Can't Find Location
 
+## Ideas About Short codes
+First character => Category.
+Second charater => Detail about category.
+Third character => Status of the requester.
+
 
 ### Mind Map - Topics to explore
 - A Client can store, relay, if required add it's own location while relaying.
-- Twitter Proxy? (@Mention a relay's twitter account to send message.)
-- Tweet ID? Tweet fetcher.
-- Heart Beat
+- Twitter proxy? (@Mention a relay's twitter account to send message.)
+- Tweet capture => If a twitter acount of a relay is mentioned, location of the tweet & user & situation is captured.
+- Heart Beat => Telemetry about a person while an act
 - Automated communication (a smart device sending a request detected automatically like a smart watch maybe)
