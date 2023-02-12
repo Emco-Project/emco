@@ -2,6 +2,10 @@
 This is a work in progress emergency communication system design blueprint.
 `EMCO` for short. It is the abbreviation of `Em`ergency `Co`mmunication
 
+All request (package) parameter names are kept as short as possible in order to lower the amount of data transferred. This should be helpful for limited connections.
+
+To make it readable, all parameter names are usually synonyms.
+
 > NOTE: Everything is subject to change.
 
 
@@ -42,22 +46,32 @@ Basic Data Structure
     is:"PUBKEY",//Issuer
     sig:"SIGNATURE",
     tm:{ //Telemetry
+        //Location
         lt:"", //Latitude
         ln:"", //Longitude
         csp:"", //Coordinate source / provider & precision 
+    
+        //time
         ldtz:"", //ISO String
         ut:"", //Unix Time
+
+        //Addres Parameters 
         ac:"",//Country
         as:"",//State
-        at:"",//Town (City)
+        at:"",//Town (City) 
         am:"",//Muncipality
     },
     r:{//Request
         t:"",//Type
         c:"io.ohshift.emco.v1",//client
-        m:"",//message
-        sc:"",//shortcode
+
+        m:"",//message string
+        sc:"",//Request content flag (aka short code), can be used without message.
         th:"",//Thread ID 
+
+        q:[//Query
+          {t:"",v:""}
+        ]
     },
     i:{//Identification
     //This is an object for a client/user to introduce itself.
@@ -74,14 +88,15 @@ Basic Data Structure
     // - title
 
     },
-    e:{//Echo
-        //Needs to be explored.
+    e:[//Echo
+      {//Needs to be explored.
         is:"ISSUER",
         sig:"SIGNATURE"
         //Echo object should contain its own signature, 
         //Echo object should be ignored when calculating request signature
-        //Echo message must not modify original request.
-    }
+        //Echo message mustn't modify original request.
+      }
+    ]
 }
 ```
 
@@ -126,10 +141,26 @@ Basic Data Structure
 
 
 ## Request Types
+These are the types of messages.
 - P: Ping
 - M: Message
 - I: Identifier
 - Q: Query
+- S: Subscription
+Idea: by adding '@' symbol to the type it can be indicated as test. Might be helpful while developing.
+
+
+## Requst Query / Subscription parameters (`r.q`)
+It's an array object, contains parameter and value pairs.
+- before => Requests before this date.
+- after => Requests after this date.
+- is => Requests by issuer id
+- tid => Thread ID (Root ID of an event chain. It is original request's signature ID)
+- sc => Requests flagged with this short code.
+- ac => Filter by Country
+- as => Filter by State
+- at => Filter by Town (City)
+- am => Filter by Muncipality
 
 ## Echo Data
 Relayed messages are called echoes. I need to think more about this topic.
