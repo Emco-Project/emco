@@ -139,82 +139,126 @@ My intial thoughts are;
 2. Echo should contain a identifier like: It's hardware or a server etc.
 
 
+## Short Codes
 
+<table>
+<tr><th>
+Codes</th><th>Status Values</th></tr>
+<tr><td>
 
-## Short Codes (Needs to be extended.)
-- AA => ALL OK
-- AA0 => All good. / I'm ok
-- AA1 => I've been rescued.
-- A => Avalanche / Snow
-- A0 => Under Avalanche
-- B => Bio Hazard
-- B1 => Bio hazard exposure
-- B2 => Chemical exposure
-- B3 => Radioactivity exposure
-- C => Earthquake
-- C1 => Under wreck
-- 
-- D => Flooding.
-- D1 => Flooding trapped.
-- 
-- E => Explosion
-- E1 => Near explosion
-- E2 => Witnessed explosion
-- 
-- F => Fire
-- F1 => Wildfire.
-- F2 => Homefire
-- G
-- H => Hurricane
-- H1 => Stranded in a hurricane zone/
-- I
-- J
-- K
-- L => Life threatening situation
-- L1 => Heart Attack
-- L2 => Attack / Stabbed / Wounded
-- L3 => Being followed
-- L4 => Need medicine
-- L5 => Need water
-- L6 => Need shelter
-- L7 => Trapped
-- M
-- N => Nature
-- N1 => Landslide
-- N2 => Storm / Tornadoe / Hurricane / Typhoon
-- N3 => Avalance
-- N4 => Flood
-- O
-- P
-- Q
-- R 
-- S => Sickness
-- T
-- U
-- V
-- W: => Sea, Ocean related messages
-- W1: => Stranded
-- W2: => Boat, ship crash
-- X: Emergency responses
-- X0: Ping
-- X1: Rescued
-- Y
-- Z: Emergency responses
-- Z0 Ping
-- Z1: Request received
-- Z2: En route
-- Z3: Arrived
-- Z4: Can't Find Location
+| Code | Meaning |
+|---:|---|
+|AA|  ALL OK |
+|A |  Avalanche / Snow |
+|A0|  Under Avalanche |
+|B |  Bio Hazard |
+|B1|  Bio hazard exposure |
+|B2|  Chemical exposure |
+|B3|  Radioactivity exposure |
+|C |  Earthquake |
+|C1|  Under wreck |
+|D |  Flooding |
+|D1|  Flood building |
+|D2|  Flood area |
+|E |  Explosion|
+|E1|  Near explosion|
+|E2|  Witnessed explosion|
+|F |  Fire |
+|F1|  Wildfire |
+|F2|  Homefire |
+|G |
+|H |  Hurricane |
+|H1|  Stranded in a hurricane zone |
+|I | |
+|J | |
+|K | |
+|L|  Life threatening situation |
+|L1|  Heart Attack |
+|L2|  Attacked / Stabbed / Wounded |
+|L3|  Being followed |
+|L4|  Need medicine |
+|L5|  Need water |
+|L6|  Need food |
+|L7|  Need shelter |
+|L8|  Trapped |
+|L9|  Trapped |
+|M| |
+|N|  Nature |
+|N1|  Landslide |
+|N2|  Storm / Tornadoe / Hurricane / Typhoon |
+|N3|  Avalance |
+|N4|  Flood |
+|O||
+|P||
+|Q||
+|R||
+|S| Sickness |
+|T| |
+|U| |
+|V| |
+|W | Sea, Ocean related messages |
+|W1| Stranded |
+|W2| Boat, ship crash |
+|X | Emergency responses |
+|X0| Ping |
+|X1| Yes |
+|X2| No |
+|X3| Maybe |
+|X4| Possible |
+|X5| Impossible |
+|X6| True |
+|X7| False |
+|X8| False |
+|X9| Rescued |
+|Y | |
+|Z | Emergency responses |
+|Z0| Request received|
+|Z1| En route |
+|Z2| Getting close |
+|Z3| Arrived |
+|Z4| Started |
+|Z5| Completed |
+|Z6| Leaving |
+|Z7| Can't Locate |
+|Z8| Wrong Address |
+
+</td><td valign="top">
+
+| Code | Description |
+|---|---|
+| 0 | All Good |
+| 1 | Mildly Affected |
+| 2 | Moderately Affected |
+| 3 | Severely Affected |
+| 4 | Very Severe |
+| 5 | Getting Worse |
+| 6 | Getting Better |
+| 7 | Stranded |
+| 8 | Rescue Here |
+| 8 | Rescued |
+| 9 | Witnessing |
+
+</td></tr> </table>
 
 ## Ideas About Short codes
-First character => Category.
-Second charater => Detail about category.
-Third character => Status of the requester.
+- First character => Category.
+- Second charater => Category detail.
+- Third character => Status of the requester.
+> Examples: 
+> F23 => Wildfire, severely affected
+> 
+> 
+
+
 
 
 ### Mind Map - Topics to explore
-- A Client can store, relay, if required add it's own location while relaying.
-- Twitter proxy? (@Mention a relay's twitter account to send message.)
-- Tweet capture => If a twitter acount of a relay is mentioned, location of the tweet & user & situation is captured.
-- Heart Beat => Telemetry about a person while an act
-- Automated communication (a smart device sending a request detected automatically like a smart watch maybe)
+> A Client can store, relay, if required add it's own location while relaying.
+>
+> Twitter proxy? (@Mention a relay's twitter account to send message.)
+>
+> Tweet capture => If a twitter acount of a relay is mentioned, location of the tweet & user & situation is captured.
+>
+> Heart Beat => Telemetry about a person while an act
+>
+> Automated communication (a smart device sending a request detected automatically like a smart watch maybe)
