@@ -208,8 +208,8 @@ Codes</th><th>Status Values</th></tr>
 | Code | Meaning |
 |---:|---|
 |AA|  ALL OK |
-|A |  Avalanche / Snow |
-|A0|  Under Avalanche |
+|A |  Just messaging |
+|A0|   |
 |B |  Bio Hazard |
 |B1|  Bio hazard exposure |
 |B2|  Chemical exposure |
@@ -243,11 +243,12 @@ Codes</th><th>Status Values</th></tr>
 |L9|  Trapped |
 |M |  Medical |
 |M1|  Insulin |
-|N|  Nature |
+|N |  Nature |
 |N1|  Landslide |
 |N2|  Storm / Tornadoe / Hurricane / Typhoon |
 |N3|  Avalance |
-|N4|  Flood |
+|N4|  Under Avalanche |
+|N5|  Flood |
 |O||
 |P||
 |Q||
@@ -256,7 +257,7 @@ Codes</th><th>Status Values</th></tr>
 |T| |
 |U| |
 |V| |
-|W | Sea, Ocean related messages |
+|W | Water (Sea, Ocean related messages) |
 |W1| Stranded |
 |W2| Boat, ship crash |
 |X | Emergency responses |
