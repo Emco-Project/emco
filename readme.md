@@ -210,28 +210,28 @@ Codes</th><th>Status Values</th></tr>
 |AA|  ALL OK |
 |A |  Just messaging |
 |A0|   |
-|B |  Bio Hazard |
+|B |  `Bio Hazard` |
 |B1|  Bio hazard exposure |
 |B2|  Chemical exposure |
 |B3|  Radioactivity exposure |
-|C |  Earthquake |
+|C |  `Earthquake` |
 |C1|  Under wreck |
-|D |  Flooding |
+|D |  `Flooding` |
 |D1|  Flood building |
 |D2|  Flood area |
-|E |  Explosion|
+|E |  `Explosion` |
 |E1|  Near explosion|
 |E2|  Witnessed explosion|
-|F |  Fire |
+|F |  `Fire` |
 |F1|  Wildfire |
 |F2|  Homefire |
 |G |
-|H |  Hurricane |
+|H |  `Hurricane` |
 |H1|  Stranded in a hurricane zone |
 |I | |
 |J | |
 |K | |
-|L|  Life threatening situation |
+|L|  `Life threatening` situation |
 |L1|  Heart Attack |
 |L2|  Attacked / Stabbed / Wounded |
 |L3|  Being followed |
@@ -241,9 +241,9 @@ Codes</th><th>Status Values</th></tr>
 |L7|  Need shelter |
 |L8|  Trapped |
 |L9|  Trapped |
-|M |  Medical |
+|M |  `Medical` |
 |M1|  Insulin |
-|N |  Nature |
+|N |  `Nature` |
 |N1|  Landslide |
 |N2|  Storm / Tornadoe / Hurricane / Typhoon |
 |N3|  Avalance |
@@ -253,14 +253,14 @@ Codes</th><th>Status Values</th></tr>
 |P||
 |Q||
 |R||
-|S| Sickness |
+|S| `Sickness` |
 |T| |
 |U| |
 |V| |
-|W | Water (Sea, Ocean related messages) |
+|W | `Water` (Sea, Ocean related messages) |
 |W1| Stranded |
 |W2| Boat, ship crash |
-|X | Emergency responses |
+|X | `Emergency responses` |
 |X0| Ping |
 |X1| Yes |
 |X2| No |
@@ -272,7 +272,7 @@ Codes</th><th>Status Values</th></tr>
 |X8| False |
 |X9| Rescued |
 |Y | |
-|Z | Emergency responses |
+|Z | `Emergency updates` |
 |Z0| Request received|
 |Z1| En route |
 |Z2| Getting close |
