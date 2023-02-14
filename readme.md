@@ -329,5 +329,7 @@ This file should contain information about how client operates, the api version 
 > Automated communication (a smart device sending a request detected automatically like a smart watch maybe)
 >
 > Regular messaging might/should be allowed but mesh access points also should prioritize emergency messages.
->
+> 
+> Initial message can be broadcasted over and over again until it gets a ping response.
+> Maybe just be sure, after a ping, can be repeated with a longer intervals.
 > ---
