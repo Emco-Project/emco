@@ -2,17 +2,43 @@
 This is a work in progress emergency communication system design blueprint.
 `EMCO` for short. It is the abbreviation of `Em`ergency `Co`mmunication
 
-All request (package) parameter names are kept as short as possible in order to lower the amount of data transferred. This should be helpful for limited connections.
+[TLDR](#emco-protocol)
 
-To make it readable, all parameter names are usually synonyms.
+## WHY / HOW / STATEMENT
+We're living in a connected yet isolated world. We've all the technology yet it seems not utilized enough.
+
+Troublesome things are happenning all around the world, and we see that communication infrastructure (& providers) takes the first hit after a disaster. I wanted to make a messaging tool, something like pager. I've been thinking about [LoRaWAN](https://hackaday.com/blog/?s=lorawan) text messengers for a long time. But I'm short on electronics knowledge to make (a good) one. 
+
+I've seen [1999 earhquake](https://en.wikipedia.org/wiki/1999_%C4%B0zmit_earthquake), we know [protests](https://en.wikipedia.org/wiki/Mahsa_Amini_protests), fires, [invasions](https://en.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine), hurricanes all around the world. Now another [earthquake](https://en.wikipedia.org/wiki/2023_Turkey%E2%80%93Syria_earthquake) and same things all over again. 
+
+I had enough.
+
+Either by the governments or technical reasons, first thing we loose is communication.
+I wanted to do something about it, instead of expecting governing people to do something about it.
+
+### It has to be `simple`, `accessible`, `extendible` (sae?)
+I've an idea. Inspired by the [nostr](https://github.com/nostr-protocol/nostr) I wanted create a protocol supported with;
+1. Software Servers
+2. Hardware Server
+3. Clients (Software & Hardware)
+
+> Every client should also be the member of the mesh network an act as a range extender.
+
+`This is just a draft idea` and I want your opinion on this, you can read more about what I am trying to do below. I know the power of the people (Internet). 
+
+Thank you.
+
 
 > NOTE: Everything is subject to change.
-
 
 ## EMCO Protocol
 `EMCO-P` is an emergency communication protocol designed to be accessible for any type of situations.
 
 Can be used with WebSocket, HTTP Post or radio frequency.
+All request (package) parameter names are kept as short as possible in order to lower the amount of data transferred. This should be helpful for limited connections.
+
+To make it readable, all parameter names are usually synonyms.
+
 
 ## EMCO Relay 
 It's a service (hardware or online server) for relaying and saving messages. Can be mentioned as `EMCO-R`
@@ -32,18 +58,18 @@ Bridge devices can translate or transmit between protocols LoRa <-> TCP
 - LoRa => Wifi Bundle
 - LoRa => Ethernet Bundle 
 
-
-# EMCO Hardware
-- Hand Terminal (Text Messenger)
-- Access Point (LORA To TCP / TCP to LORA) + Capture Portal
-- nRF24L01 
-- LoRa 915, 868, 433
-  
+# EMCO Hardwares
+- Hand Terminals (Text Messenger)
+  - LoRa 915, 868, 433
+  - nRF24L01 (?)
+- Access/Repeater Points (LORA To TCP / TCP to LORA) + w/ Capture Portal
+  - Bluetooth Mesh (?)
 
 ![Mesh Schema](https://github.com/siniradam/emco/blob/main/assets/emco-mesh-schema.png?raw=true)
+**Portable HQ:** It's a simple mobile unit (laptop?) that can access and list requests in a disaster zone, can be used by rescue teams.
 
-
-Basic Data Structure
+## Basic Data Structure
+Pretty much every parameter is optional.
 ```jsonc
 {
     is:"PUBKEY",//Issuer
@@ -66,7 +92,7 @@ Basic Data Structure
     },
     r:{//Request
         t:"",//Type
-        c:"io.ohshift.emco.v1",//client
+        c:"io.ohshift.emco.v1",//Client definition.
 
         m:"",//message string
         sc:"",//Request content flag (aka short code), can be used without message.
@@ -119,7 +145,7 @@ Basic Data Structure
 | tm.am | Muncipality                 | No       | Next type of location under a city                                                         | Çukurca                   |
 | r     | Request Object              | ~        |                                                                                            |                           |
 | r.t   | Request Type                | Yes      | Single char request type. See request type table.                                          | P                         |
-| r.c   | Request Client              | Yes      | Web service for resolving request contents with version info. See `Request Client` table.  | io.ohshift.emco.v1        |
+| r.c   | Request Client              | Yes      | Web service for resolving request contents with version info. See [Request Client](#request-client) section.  | io.ohshift.emco.v1        |
 | r.m   | Request Message             | No       | Optional text content for a request. Up to 320 characters.                                 | Fire, help!               |
 | r.sc  | Short Code                  | No       | Optional short code for various situations. See Short Status Code Table                    |                           |
 | r.th  | Thread Id                   | No       | If this message is an addition to another message, specify sig id of the previous message. |                           |
@@ -129,7 +155,6 @@ Basic Data Structure
 | i.b   | Bio                         | No       | 320 Characters text                                                                        |                           |
 | i.p   | Photo URL                   | No       | A web URL or encoded file                                                                  |                           |
 | i.smt | Twitter handle              | No       | Twitter handle                                                                             |                           |
-
 
 
 ## Coordinate Definitions
@@ -216,7 +241,8 @@ Codes</th><th>Status Values</th></tr>
 |L7|  Need shelter |
 |L8|  Trapped |
 |L9|  Trapped |
-|M| |
+|M |  Medical |
+|M1|  Insulin |
 |N|  Nature |
 |N1|  Landslide |
 |N2|  Storm / Tornadoe / Hurricane / Typhoon |
@@ -283,7 +309,11 @@ Codes</th><th>Status Values</th></tr>
 > 
 > 
 
-
+## Request Client
+Request client data is basically a definition file for the client itself.
+- io.ohshift.emco.v1 => `translates into` => https://emco.ohshift.io/v1.json
+  
+This file should contain information about how client operates, the api version it uses and other details about the client capabilities.
 
 
 ### Mind Map - Topics to explore
@@ -296,3 +326,7 @@ Codes</th><th>Status Values</th></tr>
 > Heart Beat => Telemetry about a person while an act
 >
 > Automated communication (a smart device sending a request detected automatically like a smart watch maybe)
+>
+> Regular messaging might/should be allowed but mesh access points also should prioritize emergency messages.
+>
+> ---
