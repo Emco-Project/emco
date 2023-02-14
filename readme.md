@@ -40,6 +40,9 @@ Bridge devices can translate or transmit between protocols LoRa <-> TCP
 - LoRa 915, 868, 433
   
 
+![Mesh Schema](https://github.com/siniradam/emco/blob/main/assets/emco-mesh-schema.png?raw=true)
+
+
 Basic Data Structure
 ```jsonc
 {
